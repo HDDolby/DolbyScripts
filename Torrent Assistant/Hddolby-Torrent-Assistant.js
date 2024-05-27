@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.0
+// @version      1.1.1
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -115,7 +115,7 @@
         10: 'DBTV',
         11: 'beAst',
         12: 'QHstudIo',
-		13: 'CornerMV',
+        13: 'CornerMV',
     }
 
     $ = jQuery;
@@ -302,7 +302,7 @@
         || title_lowercase.indexOf("8k") !== -1) {
         title_resolution = 6;
     }
-	else if (title_lowercase.indexOf("2160p") !== -1
+    else if (title_lowercase.indexOf("2160p") !== -1
         || title_lowercase.indexOf("uhd") !== -1
         || title_lowercase.indexOf("4k") !== -1) {
         title_resolution = 1;
@@ -348,7 +348,7 @@
 
     let poster;
     let fixtd, mediainfo, mediainfo_short;
-	let tmdb, tmdb_VideoName;
+    let tmdb, tmdb_VideoName;
 
     let tdlist = $('#outer td.rowhead');
     for (let i = 0; i < tdlist.length; i++) {
@@ -385,7 +385,7 @@
                         if (Object.hasOwnProperty.call(cat_constant, key)) {
                             if (word.includes(cat_constant[key])) {
                                 cat = Number(key);
-								break;
+                                break;
                             }
                         }
                     }
@@ -396,7 +396,7 @@
                         if (Object.hasOwnProperty.call(type_constant, key)) {
                             if (word.includes(type_constant[key])) {
                                 type = Number(key);
-								break;
+                                break;
                             }
                         }
                     }
@@ -410,7 +410,7 @@
                         if (Object.hasOwnProperty.call(encode_constant, key)) {
                             if (word.includes(encode_constant[key])) {
                                 encode = Number(key);
-								break;
+                                break;
                             }
                         }
                     }
@@ -421,7 +421,7 @@
                         if (Object.hasOwnProperty.call(audio_constant, key)) {
                             if (word.includes(audio_constant[key])) {
                                 audio = Number(key);
-								break;
+                                break;
                             }
                         }
                     }
@@ -434,7 +434,7 @@
                         if (Object.hasOwnProperty.call(resolution_constant, key)) {
                             if (word.includes(resolution_constant[key])) {
                                 resolution = Number(key);
-								break;
+                                break;
                             }
                         }
                     }
@@ -446,7 +446,7 @@
             seeders = Number(td.parent().children().last().text().replace(/个做种者.*$/, ''));
         }
 
-		if (td.text() == ('TMDb信息')) {
+        if (td.text() == ('TMDb信息')) {
             tmdb_VideoName = td.parent().children().last().text().split('上映时间：')[0].split('影片名称：')[1];
             console.log('TMDb影片名称: ', tmdb_VideoName);
             tmdb_VideoName = tmdb_VideoName.split(' ')[0].replace(/[`:_.~～!@#$%^&*() \+ =<>?"{}|, \/ ;' \\ [ \] ·~！@#￥%……&*（）—— \+ ={}|《》？：“”【】、；‘’，。、]/g, '');
