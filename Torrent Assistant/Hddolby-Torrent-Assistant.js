@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.1.2
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -255,7 +255,7 @@
     ) {
         title_audio = 1;
     }
-    else if (title_lowercase.indexOf("dts-x") !== -1) {
+    else if (title_lowercase.indexOf("dts-x") !== -1 || title_lowercase.indexOf("dts:x") !== -1) {
         title_audio = 15;
     }
     else if (title_lowercase.indexOf("truehd") !== -1) {
