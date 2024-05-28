@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @version      1.1.3
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -272,12 +272,12 @@
     // eac3 判断前置于 ac3
     else if (title_lowercase.indexOf("ddp") !== -1
         || title_lowercase.indexOf("eac3") !== -1
+        || title_lowercase.indexOf("dd+") !== -1
     ) {
         title_audio = 14;
     }
     else if (title_lowercase.indexOf("ac3") !== -1
         || title_lowercase.indexOf("ac-3") !== -1
-        || title_lowercase.indexOf("dd+") !== -1
         || title_lowercase.indexOf("dd2") !== -1
         || title_lowercase.indexOf("dd5") !== -1
         || title_lowercase.indexOf("dd.2") !== -1
