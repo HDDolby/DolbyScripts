@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.3
+// @version      1.1.4
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -576,12 +576,12 @@
     }
 
     if (seeders == 0) {
-        $('#assistant-tooltips').append('做种人数为0<br>');
+        $('#assistant-tooltips').append('做种人数为0，请做种<br>');
         error = true;
     }
 
     if (!tmdb_VideoName) {
-        $('#assistant-tooltips').append('未設置TMDb信息<br>');
+        $('#assistant-tooltips').append('未设置TMDb信息,请查看WIKI教程： https://wiki.orcinusorca.org/zh/TMDB/GetTMDBlink <br>');
         error = true;
     }
 
