@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.4
+// @version      1.1.5
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -278,6 +278,7 @@
     }
     else if (title_lowercase.indexOf("ac3") !== -1
         || title_lowercase.indexOf("ac-3") !== -1
+        || title_lowercase.indexOf("dd1") !== -1
         || title_lowercase.indexOf("dd2") !== -1
         || title_lowercase.indexOf("dd5") !== -1
         || title_lowercase.indexOf("dd.2") !== -1
