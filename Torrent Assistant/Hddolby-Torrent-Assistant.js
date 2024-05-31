@@ -428,6 +428,7 @@
                     }
                     // 防重复处理
                     if (word.includes('DTS-HD MA')) audio = 1;
+                    if (word.includes('DTS-X')) audio = 15;
                 }
                 if (word.includes('分辨率')) {
                     // 分辨率
