@@ -3,6 +3,8 @@
 ## 审种脚本 Torrent Assistant
 [Greasy Fork](https://greasyfork.org/zh-CN/scripts/467002-hddolby-torrent-assistant)
 ### 更新记录
+#### 1.1.6
+- 支持AVS3、AVS+、AV3A、AVSA 
 #### 1.1.5
 - 修复DTS-X识别为DTS MA的问题
 - 修复DD1.0识别为DDP的问题

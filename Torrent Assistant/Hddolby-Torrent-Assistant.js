@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.5
+// @version      1.1.6
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -68,7 +68,8 @@
         11: 'AV1',
         12: 'VP9',
         13: 'H.266/VVC',
-        99: 'AVS3'
+        14: 'AVS3',
+		15: 'AVS+',
     };
 
     /**音频编码类型 */
@@ -88,7 +89,8 @@
         13: 'Opus',
         14: 'DDP/EAC3',
         15: 'DTS-X',
-        99: 'AV3A',
+        16: 'AV3A',
+		17: 'AVSA',
     };
 
     /**分辨率 */
@@ -244,6 +246,12 @@
     ) {
         title_encode = 13;
     }
+	else if (title_lowercase.indexOf("avs3") !== -1) {
+        title_encode = 14;
+    }
+	else if (title_lowercase.indexOf("avs+") !== -1) {
+        title_encode = 15;
+    }
     else {
         console.warn('Kesa审种脚本: 未检测到已有视频编码类型');
         title_warn_no += 2;
@@ -292,6 +300,12 @@
     }
     else if (title_lowercase.indexOf("flac") !== -1) {
         title_audio = 7;
+    }
+	else if (title_lowercase.indexOf("av3a") !== -1) {
+        title_audio = 16;
+    }
+	else if (title_lowercase.indexOf("avsa") !== -1) {
+        title_audio = 17;
     }
     else {
         console.warn('Kesa审种脚本: 未检测到已有音频编码类型');
