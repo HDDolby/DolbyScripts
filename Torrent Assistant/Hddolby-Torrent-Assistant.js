@@ -254,7 +254,7 @@
     else if (title_lowercase.indexOf("avs+") !== -1) {
         title_encode = 15;
     }
-    else if (title_lowercase.indexOf("AVS2") !== -1) {
+    else if (title_lowercase.indexOf("avs2") !== -1) {
         title_encode = 16;
     }
     else {
