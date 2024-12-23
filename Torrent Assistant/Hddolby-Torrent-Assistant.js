@@ -69,7 +69,8 @@
         12: 'VP9',
         13: 'H.266/VVC',
         14: 'AVS3',
-		15: 'AVS+',
+        15: 'AVS+',
+        16: 'AVS2',
     };
 
     /**音频编码类型 */
@@ -90,7 +91,8 @@
         14: 'DDP/EAC3',
         15: 'DTS-X',
         16: 'AV3A',
-		17: 'AVSA',
+        17: 'AVSA',
+        18: 'MPEG',
     };
 
     /**分辨率 */
@@ -246,11 +248,14 @@
     ) {
         title_encode = 13;
     }
-	else if (title_lowercase.indexOf("avs3") !== -1) {
+    else if (title_lowercase.indexOf("avs3") !== -1) {
         title_encode = 14;
     }
-	else if (title_lowercase.indexOf("avs+") !== -1) {
+    else if (title_lowercase.indexOf("avs+") !== -1) {
         title_encode = 15;
+    }
+    else if (title_lowercase.indexOf("AVS2") !== -1) {
+        title_encode = 16;
     }
     else {
         console.warn('Kesa审种脚本: 未检测到已有视频编码类型');
@@ -301,11 +306,14 @@
     else if (title_lowercase.indexOf("flac") !== -1) {
         title_audio = 7;
     }
-	else if (title_lowercase.indexOf("av3a") !== -1) {
+    else if (title_lowercase.indexOf("av3a") !== -1) {
         title_audio = 16;
     }
-	else if (title_lowercase.indexOf("avsa") !== -1) {
+    else if (title_lowercase.indexOf("avsa") !== -1) {
         title_audio = 17;
+    }
+    else if (title_lowercase.indexOf("mpge") !== -1) {
+        title_audio = 18;
     }
     else {
         console.warn('Kesa审种脚本: 未检测到已有音频编码类型');
