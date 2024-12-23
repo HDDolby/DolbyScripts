@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.6
+// @version      1.1.7
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
