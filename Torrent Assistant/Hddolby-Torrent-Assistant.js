@@ -6,7 +6,7 @@
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
 // @icon         https://www.hddolby.com/favicon.ico
-// @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
+// @require      https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/467002/Hddolby-Torrent-Assistant.user.js
