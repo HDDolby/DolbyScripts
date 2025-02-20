@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.7
+// @version      1.1.8
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -56,6 +56,7 @@
         9: 'CD',
         10: 'Encode',
         11: 'Other',
+        12: 'FEED',
     };
 
     /**视频编码类型 */
@@ -207,6 +208,9 @@
     else if (title_lowercase.indexOf("cd") !== -1) {
         title_type = 9;
     }
+    else if (title_lowercase.indexOf("feed") !== -1) {
+        title_type = 12;
+    }
     else {
         console.warn('Kesa审种脚本: 未检测到已有媒介类型');
         title_warn_no += 1;
@@ -312,7 +316,7 @@
     else if (title_lowercase.indexOf("avsa") !== -1) {
         title_audio = 17;
     }
-    else if (title_lowercase.indexOf("mpge") !== -1) {
+    else if (title_lowercase.indexOf("mpeg") !== -1) {
         title_audio = 18;
     }
     else {
