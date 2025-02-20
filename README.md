@@ -3,6 +3,13 @@
 ## 审种脚本 Torrent Assistant
 [Greasy Fork](https://greasyfork.org/zh-CN/scripts/467002-hddolby-torrent-assistant)
 ### 更新记录
+#### 1.1.8
+- 适配FEED
+- 适配MPEG
+
+#### 1.1.7
+- 支持AVS2
+
 #### 1.1.6
 - 支持AVS3、AVS+、AV3A、AVSA 
 #### 1.1.5
