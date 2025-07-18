@@ -19,10 +19,21 @@
     const modifyButton = document.createElement('button');
     modifyButton.textContent = '修改贵宾信息';
     modifyButton.addEventListener('click', function() {
-        // 计算当前时间 + 31 天
-        const currentDate = new Date();
-        currentDate.setDate(currentDate.getDate() + 31);
-        const newVipDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+        // 直接获取 UTC+8 时区的当前时间
+        const now = new Date();
+        const utcPlus8Date = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours() + 8, now.getUTCMinutes(), now.getUTCSeconds());
+        
+        // 增加 31 天
+        utcPlus8Date.setDate(utcPlus8Date.getDate() + 31);
+
+        // 格式化日期为 YYYY-MM-DD HH:mm:ss
+        const year = utcPlus8Date.getFullYear();
+        const month = String(utcPlus8Date.getMonth() + 1).padStart(2, '0');
+        const day = String(utcPlus8Date.getDate()).padStart(2, '0');
+        const hours = String(utcPlus8Date.getHours()).padStart(2, '0');
+        const minutes = String(utcPlus8Date.getMinutes()).padStart(2, '0');
+        const seconds = String(utcPlus8Date.getSeconds()).padStart(2, '0');
+        const newVipDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
         // 修改 vip_until 输入框的值
         const vipUntilInput = document.querySelector('input[name="vip_until"]');
