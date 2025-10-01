@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hddolby-Torrent-Assistant
 // @namespace    http://tampermonkey.net/
-// @version      1.1.8
+// @version      1.1.9
 // @description  杜比审种助手
 // @author       Kesa
 // @match        http*://www.hddolby.com/details.php*
@@ -125,7 +125,7 @@
 
     $ = jQuery;
 
-    // 1. FIXME: 从标题筛选信息------------------------------------------------------------
+    // 1. FIXME: 从标题筛选信息------------------------------------------
     let title = $('#top').text();
     console.log('原始title: ', title);
 
@@ -353,7 +353,7 @@
         title_is_complete = true;
     }
 
-    // FIXME: 2. 从种子表单筛选信息------------------------------------------------------------
+    // FIXME: 2. 从种子表单筛选信息------------------------------------------
     let subtitle;
     /**表单_种子种类 */
     let cat;
@@ -374,8 +374,10 @@
     let seeders;
 
     let poster;
-    let fixtd, mediainfo, mediainfo_short;
+    // 初始化变量，设置默认值
+    let fixtd, mediainfo = false, mediainfo_short;
     let tmdb, tmdb_VideoName;
+    let screenshots = false;
 
     let tdlist = $('#outer td.rowhead');
     for (let i = 0; i < tdlist.length; i++) {
@@ -482,8 +484,36 @@
                 tmdb = 1;
             }
         }
+        
+        // 检查MediaInfo信息是否存在，如果不存在则显示提示
+        if (td.text() == 'MediaInfo信息' || td.text() == 'MediaInfo') {
+            let mediainfoContent = td.parent().children().last().text().trim();
+            if (mediainfoContent !== '' && mediainfoContent.length > 0) {
+                mediainfo = true;
+            }
+        }
+        
+        // 检查截图信息是否存在 - 尝试多种可能的选择器
+        if (td.find('a[href*="screenshots"]').length > 0) {
+            let screenshotsText = td.find('span.nowrap').text() || td.text();
+            // 检查是否包含截图数量信息
+            const match = screenshotsText.match(/\((\d+)张\)/) || screenshotsText.match(/(\d+)张/);
+            if (match && parseInt(match[1]) > 0) {
+                screenshots = true;
+            }
+        } else if (td.text().includes('截图') || td.text().includes('截圖')) {
+            // 备选方案：直接查找包含"截图"文本的行
+            let screenshotsText = td.parent().children().last().text();
+            if (screenshotsText.includes('张') || screenshotsText.includes('张') || screenshotsText.length > 5) {
+                screenshots = true;
+            }
+        }
     }
 
+    // 记录检测结果到控制台，便于调试
+    console.log('------检测结果----------------------:');
+    console.log('MediaInfo检测结果:', mediainfo);
+    console.log('截图检测结果:', screenshots);
     console.log('------标题信息解析----------------------:');
     console.log('小写标题: ', title_lowercase);
     console.log(`媒介类型: ${type_constant[title_type]}: ${title_type}
@@ -610,6 +640,18 @@
 
     if (!tmdb_VideoName) {
         $('#assistant-tooltips').append('未设置TMDb信息,请查看WIKI教程： https://wiki.orcinusorca.org/zh/TMDB/GetTMDBlink <br>');
+        error = true;
+    }
+    
+    // 检查MediaInfo信息是否存在，如果不存在则显示提示
+    if (mediainfo === false) {
+        $('#assistant-tooltips').append('未填写MediaInfo<br>');
+        error = true;
+    }
+    
+    // 检查截图信息是否存在，如果不存在则显示提示
+    if (screenshots === false) {
+        $('#assistant-tooltips').append('未添加截图<br>');
         error = true;
     }
 
